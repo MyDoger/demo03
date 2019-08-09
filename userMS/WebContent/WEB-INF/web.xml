@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>UMS_el</display-name>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>user</servlet-name>
+  	<servlet-class>com.woniu.controller.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	<url-pattern>/user.do</url-pattern>
+  </servlet-mapping>
+  	
+  <filter>
+  	<filter-name>myFilter</filter-name>
+  	<filter-class>com.woniu.util.FilterDemo</filter-class>
+  	<init-param>
+  		<param-name>encode</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>myFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+  
+  <filter>
+  	<filter-name>loginFilter</filter-name>
+  	<filter-class>com.woniu.util.LoginFilter</filter-class>
+  	<init-param>
+  		<param-name>pass</param-name>
+  		<param-value>login,reg</param-value>
+  	</init-param>
+  	
+  	<init-param>
+  		<param-name>isUse</param-name>
+  		<param-value>false</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>loginFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  <filter>
+  	<filter-name>logFilter</filter-name>
+  	<filter-class>com.woniu.util.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>logFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+</web-app>
